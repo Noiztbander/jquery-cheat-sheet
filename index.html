@@ -37,12 +37,10 @@
               <legend>Code</legend>
               <code>
                 <pre>
-&lt;svg height="130" width="500"
-style="margin-left:auto; margin-right:auto; display:block;">
-&lt;defs>
-&lt;linearGradient id="grad1"
-x1="0%" y1="0%" x2="100%" y2="0%">
-											</pre
+    document.addEventListener('DOMContentLoaded', function() {
+        alert("Ready!");
+    }, false);
+								</pre
                 >
               </code>
             </fieldset>
@@ -54,13 +52,10 @@ x1="0%" y1="0%" x2="100%" y2="0%">
               <legend>Code</legend>
               <code>
                 <pre>
-&lt;svg height="130" width="500"
-style="margin-left:auto; margin-right:auto; display:block;">
-&lt;defs>
-&lt;linearGradient id="grad1"
-x1="0%" y1="0%" x2="100%" y2="0%">
-										</pre
-                >
+    $( document ).ready(function() {
+      console.log( "ready!" );
+    });
+                </pre>
               </code>
             </fieldset>
             <div class="jquery-code-example">hola</div>
@@ -76,7 +71,11 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    document.getElementById("prueba").addEventListener("click", function( event ) {
+      event.target.innerHTML = "Conteo de Clicks: " + event.detail;
+    }, false);
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -85,7 +84,11 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $( "p" ).click(function() {
+      $( this ).slideUp();
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -100,7 +103,13 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    document.getElementById("demo").ondblclick = function() {myFunction()};
+
+    function myFunction() {
+      document.getElementById("demo").innerHTML = "I was double-clicked!";
+    }
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -109,7 +118,11 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $("p").dblclick(function(){
+      alert("The paragraph was double-clicked");
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -117,14 +130,21 @@ x1="0%" y1="0%" x2="100%" y2="0%">
       </section>
       <section class="s-container">
         <div class="div-article-grid">
-          <h3>Clicked</h3>
+          <h3>Key pressed</h3>
           <p>Explanation: When the user presses a key on the keyboard</p>
           <div class="Js-ex">
             <h4>Javascript Vanilla</h4>
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    textarea.addEventListener('keydown', (e) => {
+      if (!e.repeat)
+        logMessage(`first keydown event. key property value is "${e.key}"`);
+      else
+        logMessage(`keydown event repeats. key property value is "${e.key}"`);
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -133,7 +153,11 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $( "#target" ).keydown(function() {
+      alert( "Handler for .keydown() called." );
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -148,7 +172,15 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    button.onclick = function(event) {
+      if (event.altKey && event.shiftKey) {
+        alert('Hooray!');
+      }
+    };
+
+    On HTML script: onmousemove="this.value=event.clientX+':'+event.clientY"
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -157,7 +189,18 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $( "div" ).mousemove(function( event ) {
+      var pageCoords = "( " + event.pageX + ", " + event.pageY + " )";
+      var clientCoords = "( " + event.clientX + ", " + event.clientY + " )";
+      $( "span" ).first().text( "( event.pageX, event.pageY ) : " + pageCoords );
+      $( "span" ).last().text( "( event.clientX, event.clientY ) : " + clientCoords );
+    });
+
+    $( "#cart" ).on( "mouseenter mouseleave", function( event ) {
+      $( this ).toggleClass( "active" );
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -172,7 +215,9 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    document.getElementById("myText").value = "Johnny Bravo";
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -181,7 +226,9 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $("text.sitebg").val("000000");
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -196,7 +243,15 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $(document).ready(function() {
+      var tmpImg = new Image() ;
+      tmpImg.src = $('#img').attr('src') ;
+      tmpImg.onload = function() {
+          // Run onload code.
+      };
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -205,7 +260,16 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $("img").one("load", function() {
+      // do stuff
+    }).each(function() {
+      if(this.complete) {
+          $(this).load(); // For jQuery < 3.0
+          // $(this).trigger('load'); // For jQuery >= 3.0
+      }
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -223,7 +287,21 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    function testImage(url) {
+      var tester = new Image();
+      tester.addEventListener('load', imageFound);
+      tester.addEventListener('error', imageNotFound);
+      tester.src = url;
+    }
+    function imageFound() {
+        alert('That image is found and loaded');
+    }
+    function imageNotFound() {
+        alert('That image was not found.');
+    }
+    testImage("http://foo.com/bar.jpg");
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -232,7 +310,11 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $("img").on("error", function(){
+      $("img").replaceWith("&lt;p>Error loading image!&lt;/p>");
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -247,7 +329,9 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    document.getElementById("myForm").submit();
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -256,7 +340,16 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $( "#target" ).submit(function( event ) {
+    alert( "Handler for .submit() called." );
+    event.preventDefault();
+    });
+
+    $( "#other" ).click(function() {
+      $( "#target" ).submit();
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -273,7 +366,18 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    function select(selectId, optionValToSelect){
+        var selectElement = document.getElementById(selectId);
+        var selectOptions = selectElement.options;
+        for (var opt, j = 0; opt = selectOptions[j]; j++) {
+            if (opt.value == optionValToSelect) {
+                selectElement.selectedIndex = j;
+                break;
+            }
+        }
+    }
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -282,7 +386,15 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $( ".target" ).change(function() {
+      alert( "Handler for .change() called." );
+    });
+
+    $( "#other" ).click(function() {
+      $( ".target" ).change();
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -297,7 +409,15 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    On HTML: &lt;img onmouseover="bigImg(this)" src="smiley.gif" alt="Smiley">
+
+    document.getElementById("demo").onmouseover = function() {mouseOver()};
+
+    function mouseOver() {
+      document.getElementById("demo").style.color = "red";
+    }
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -306,7 +426,17 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    .on( "mouseover", handler )
+
+    $( "#outer" ).mouseover(function() {
+      $( "#log" ).append( "<div>Handler for .mouseover() called.</div>" );
+    });
+
+    $( "#other" ).click(function() {
+      $( "#outer" ).mouseover();
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -321,7 +451,15 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+      function check() {
+      document.getElementById("myCheck").checked = true;
+    }
+
+    function uncheck() {
+      document.getElementById("myCheck").checked = false;
+    }
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -330,7 +468,19 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $("#checkbox_activar").click(function() {
+      $("#checkbox").attr('checked', true);
+    });
+
+    $("#checkbox_desactivar").click(function() {
+      $("#checkbox").attr('checked', false);
+    });
+
+    $( "input" ).on( "click", function() {
+      $( "#log" ).html( $( "input:checked" ).val() + " is checked!" );
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -348,7 +498,16 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    function fAbreGuias() {
+      var vGuias = document.getElementById('guias');
+      if (vGuias.style.display == "block") {
+        vGuias.style.display = "none";
+      } else {
+        vGuias.style.display = "block";
+      }
+    }
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -357,7 +516,21 @@ x1="0%" y1="0%" x2="100%" y2="0%">
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $( "button" ).click(function() {
+      $( "p" ).show( "slow" );
+    });
+
+    $( "#showr" ).click(function() {
+      $( "div" ).first().show( "fast", function showNext() {
+        $( this ).next( "div" ).show( "fast", showNext );
+      });
+    });
+
+    $( "#hidr" ).click(function() {
+      $( "div" ).hide( 1000 );
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1100,6 +1273,9 @@ x1="0%" y1="0%" x2="100%" y2="0%">
       </section>
     </main>
     <aside class="aside" id="aside">
+      <div class="asideArrow">
+        <i class="fas fa-arrow-circle-down"></i>
+      </div>
       <nav class="nav">
         <h3 class="h3-title-aside" id="h3-title-events">Events</h3>
         <ul class="noStyleList displayNone" id="asideListEvents">
@@ -1132,9 +1308,9 @@ x1="0%" y1="0%" x2="100%" y2="0%">
           <li>Remove a class</li>
           <li>Toggle a class</li>
           <li>Add a disabled attribute</li>
-					<li>Remove the disabled attribute</li>
-					<li>Set a data-src attribute</li>
-					<li>Remove a data-src attribute</li>
+          <li>Remove the disabled attribute</li>
+          <li>Set a data-src attribute</li>
+          <li>Remove a data-src attribute</li>
           <li>Hide</li>
           <li>Show</li>
           <li>Fade in</li>
