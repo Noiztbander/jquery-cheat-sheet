@@ -41,6 +41,7 @@ body::-webkit-scrollbar{
 .aside{
 	order: 1;
 	border-right: 1px solid rgb(0, 0, 0);
+	overflow-y: scroll;
 }
 
 .footer{
@@ -128,16 +129,21 @@ body::-webkit-scrollbar{
 
 /* Aside */
 
+.aside::-webkit-scrollbar{
+	width: 0px;
+}
+
 .noStyleList {
   list-style: none;
-	margin: 2% 5%;
 }
 .noStyleList li{
  cursor: pointer;
+ padding: 1% 5%;
 }
 
 .noStyleList li:hover{
 	border-bottom: solid 1px black;
+	background-color: rgb(179, 179, 179);
 }
 
 .h3-title-aside{
