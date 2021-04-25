@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Js-vs-Jquery</title>
 
+    <!-- Jquery library ONLINE-->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+    <!-- Jquery library LOCAL-->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
     <!-- Awesome icons Library-->
     <link
       rel="stylesheet"
@@ -38,13 +44,11 @@
               <code>
                 <pre>
     document.addEventListener('DOMContentLoaded', function() {
-        alert("Ready!");
+      alert("Ready!");
     }, false);
-								</pre
-                >
+								</pre>
               </code>
             </fieldset>
-            <div class="js-code-example">hola</div>
           </div>
           <div class="Jquery-ex">
             <h4>Jquery</h4>
@@ -58,7 +62,6 @@
                 </pre>
               </code>
             </fieldset>
-            <div class="jquery-code-example">hola</div>
           </div>
         </div>
       </section>
@@ -72,7 +75,8 @@
               <legend>Code</legend>
               <code>
                 <pre>
-    document.getElementById("prueba").addEventListener("click", function( event ) {
+    document.getElementById("prueba")
+    .addEventListener("click", function( event ) {
       event.target.innerHTML = "Conteo de Clicks: " + event.detail;
     }, false);
                 </pre>
@@ -104,11 +108,11 @@
               <legend>Code</legend>
               <code>
                 <pre>
-    document.getElementById("demo").ondblclick = function() {myFunction()};
+    let btn = document.getElementById("mybtnjs3");
 
-    function myFunction() {
-      document.getElementById("demo").innerHTML = "I was double-clicked!";
-    }
+    btn.ondblclick = () => {
+      btn.innerHTML = "I was double-clicked!";
+    };
                 </pre>
               </code>
             </fieldset>
@@ -138,12 +142,17 @@
               <legend>Code</legend>
               <code>
                 <pre>
-    textarea.addEventListener('keydown', (e) => {
-      if (!e.repeat)
-        logMessage(`first keydown event. key property value is "${e.key}"`);
-      else
-        logMessage(`keydown event repeats. key property value is "${e.key}"`);
-    });
+    function uniCharCode(event) {
+      var char = event.which || event.keyCode;
+      document.getElementById("demo").innerHTML =
+        "The Unicode CHARACTER code is: " + char;
+    }
+
+    function uniKeyCode(event) {
+      var key = event.keyCode;
+      document.getElementById("demo2").innerHTML =
+        "The Unicode KEY code is: " + key;
+    }
                 </pre>
               </code>
             </fieldset>
@@ -154,8 +163,11 @@
               <legend>Code</legend>
               <code>
                 <pre>
-    $( "#target" ).keydown(function() {
-      alert( "Handler for .keydown() called." );
+    i = 0;
+    $(document).ready(function(){
+      $("#input-jquery-4").keypress(function(){
+        $("#span-jquery-4").text(i += 1);
+      });
     });
                 </pre>
               </code>
@@ -173,13 +185,23 @@
               <legend>Code</legend>
               <code>
                 <pre>
-    button.onclick = function(event) {
-      if (event.altKey && event.shiftKey) {
-        alert('Hooray!');
-      }
-    };
+    On HTML script: onmousemove =
+    "this.value=event.clientX+':'+event.clientY"
 
-    On HTML script: onmousemove="this.value=event.clientX+':'+event.clientY"
+    document.getElementById("demo")
+    .addEventListener("mouseover", mouseOver);
+    document.getElementById("demo")
+    .addEventListener("mouseout", mouseOut);
+
+    function mouseOver() {
+      document.getElementById("demo")
+      .style.color = "red";
+    }
+
+    function mouseOut() {
+      document.getElementById("demo")
+      .style.color = "black";
+    }
                 </pre>
               </code>
             </fieldset>
@@ -190,16 +212,29 @@
               <legend>Code</legend>
               <code>
                 <pre>
-    $( "div" ).mousemove(function( event ) {
-      var pageCoords = "( " + event.pageX + ", " + event.pageY + " )";
-      var clientCoords = "( " + event.clientX + ", " + event.clientY + " )";
-      $( "span" ).first().text( "( event.pageX, event.pageY ) : " + pageCoords );
-      $( "span" ).last().text( "( event.clientX, event.clientY ) : " + clientCoords );
-    });
+    var i = 0;
+    $("div.overout")
+      .mouseover(function () {
+        i += 1;
+        $(this)
+          .find("span")
+          .text("mouse over x " + i);
+      })
+      .mouseout(function () {
+        $(this).find("span").text("mouse out ");
+      });
 
-    $( "#cart" ).on( "mouseenter mouseleave", function( event ) {
-      $( this ).toggleClass( "active" );
-    });
+    var n = 0;
+    $("div.enterleave")
+      .mouseenter(function () {
+        n += 1;
+        $(this)
+          .find("span")
+          .text("mouse enter x " + n);
+      })
+      .mouseleave(function () {
+        $(this).find("span").text("mouse leave");
+      });
                 </pre>
               </code>
             </fieldset>
@@ -545,7 +580,11 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    var tag = document.createElement("p");
+    tag.innerText("Tutorix is the best e-learning platform");
+    tag.appendChild(text);
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -554,7 +593,10 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $("p").append("Some appended text.");
+    $("p").prepend("Some prepended text.");
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -569,7 +611,10 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    var el = document.getElementById('div-02');
+    el.nextElementSibling.remove(); // Elimina el div con el id 'div-03'
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -578,7 +623,11 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $( ".hello" ).remove();
+
+    $("p").filter(":contains('Hello')").remove()
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -596,7 +645,10 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    let div = document.createElement("div")
+    div.append("Some text")
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -605,7 +657,11 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $("button").click(function(){
+      $("p").append("<b>Appended text</b>");
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -623,7 +679,11 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    let div = document.createElement("div");
+    div.append("Some text");
+    div.prepend("Headline: ");
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -632,7 +692,11 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $("button").click(function(){
+      $("p").prepend("<b>Prepended text</b>");
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -650,7 +714,13 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    var parent = document.createElement("div");
+    var child = document.createElement("p");
+    parent.appendChild(child);
+    var span = document.createElement("span");
+    child.after(span);
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -660,6 +730,7 @@
               <legend>Code</legend>
               <code>
                 <pre></pre>
+                $( "&lt;p>Test&lt;/p>" ).insertAfter( ".inner" );
               </code>
             </fieldset>
           </div>
@@ -677,7 +748,15 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    var sp1 = document.createElement("span");
+    // Obtener una referencia al elemento, antes de donde queremos insertar el elemento
+    var sp2 = document.getElementById("childElement");
+    // Obtener una referencia al nodo padre
+    var parentDiv = sp2.parentNode;
+    // Inserta un nuevo elemento en el DOM antes de sp2
+    parentDiv.insertBefore(sp1, sp2);
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -686,7 +765,11 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $("button").click(function(){
+      $("&lt;span>Hello world!&lt;/span>").insertBefore("p");
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -701,7 +784,10 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    var p_prime = p.cloneNode(true);
+    var p = document.getElementById("para1");
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -710,7 +796,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $( ".hello" ).clone().appendTo( ".goodbye" );
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -725,7 +813,12 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    const div = document.createElement('div');
+
+    div.className = 'foo';
+    div.classList.add("anotherclass");
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -734,7 +827,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $( "p" ).addClass( "myClass yourClass" );
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -749,7 +844,12 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    function myFunction() {
+      var element = document.getElementById("myDIV");
+      element.classList.remove("mystyle");
+    }
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -758,7 +858,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" );
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -773,7 +875,12 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    function myFunction() {
+      var element = document.getElementById("myDIV");
+      element.classList.toggle("mystyle");
+    }
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -782,7 +889,11 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $("button").click(function(){
+      $("p").toggleClass("main");
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -797,7 +908,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    document.getElementById("myBtn").disabled = true;
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -807,6 +920,7 @@
               <legend>Code</legend>
               <code>
                 <pre></pre>
+                $(selector).attr('disabled', true);
               </code>
             </fieldset>
           </div>
@@ -821,7 +935,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    document.getElementById("myBtn").disabled = false;
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -830,7 +946,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $(selector).attr('disabled', false);
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -845,7 +963,23 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    &lt;div id="user" data-id="1234567890" data-user="johndoe" data-date-of-birth>
+    John Doe
+    &lt;/div>
+
+    const el = document.querySelector('#user');
+
+    // el.id == 'user'
+    // el.dataset.id === '1234567890'
+    // el.dataset.user === 'johndoe'
+    // el.dataset.dateOfBirth === ''
+
+    // set the data attribute
+    el.dataset.dateOfBirth = '1960-10-03';
+    // Result: el.dataset.dateOfBirth === 1960-10-03
+
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -854,7 +988,14 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    &lt;div data-role="page" data-last-value="43" data-hidden="true" data-options='{"name":"John"}'>&lt;/div>
+
+    $( "div" ).data( "role" ) === "page";
+    $( "div" ).data( "lastValue" ) === 43;
+    $( "div" ).data( "hidden" ) === true;
+    $( "div" ).data( "options" ).name === "John";
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -869,7 +1010,21 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    &lt;div id="user" data-id="1234567890" data-user="johndoe" data-date-of-birth>
+    John Doe
+    &lt;/div>
+
+    const el = document.querySelector('#user');
+
+    // el.id == 'user'
+    // el.dataset.id === '1234567890'
+    // el.dataset.user === 'johndoe'
+    // el.dataset.dateOfBirth === ''
+
+    delete el.dataset.dateOfBirth;
+    // Result: el.dataset.dateOfBirth === undefined
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -878,7 +1033,10 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $( "div" ).removeData( "test1" );
+    // Result: el.test1 === undefined
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -893,7 +1051,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    document.getElementById("myDIV").style.display = "none";
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -902,7 +1062,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $("#elementId").hide();
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -917,7 +1079,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    document.getElementById("myDIV").style.display = "inline";
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -926,7 +1090,12 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $("button").click(function(){
+      $("p").show();
+    });
+              </pre
+                >
               </code>
             </fieldset>
           </div>
@@ -941,7 +1110,20 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    function unfade(element) {
+      var op = 0.1;  // initial opacity
+      element.style.display = 'block';
+      var timer = setInterval(function () {
+          if (op >= 1){
+              clearInterval(timer);
+          }
+          element.style.opacity = op;
+          element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+          op += op * 0.1;
+      }, 10);
+    }
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -950,7 +1132,11 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $(".btn2").click(function(){
+      $("p").fadeIn();
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -965,7 +1151,20 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    function fade(element) {
+      var op = 1;  // initial opacity
+      var timer = setInterval(function () {
+          if (op <= 0.1){
+              clearInterval(timer);
+              element.style.display = 'none';
+          }
+          element.style.opacity = op;
+          element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+          op -= op * 0.1;
+      }, 50);
+    }
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -974,7 +1173,11 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $(".btn1").click(function(){
+      $("p").fadeOut();
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -992,7 +1195,13 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    const arr = [1,2,3];
+
+    for (const num of arr) {
+      console.log(num);
+    }
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1001,7 +1210,11 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $( "li" ).each(function() {
+      $( this ).toggleClass( "example" );
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1019,7 +1232,23 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    if (node.parentElement) {
+      node.parentElement.style.color = "red";
+    }
+
+    var x = document.getElementById("myLI").parentElement.nodeName;
+
+    document.body.parentNode;
+    // Returns the &lt;html> element
+    document.body.parentElement;
+    // Returns the &lt;html> element
+
+    document.documentElement.parentNode;
+    // Returns the Document node
+    document.documentElement.parentElement;
+    // Returns null (&lt;html> does not have a parent ELEMENT node)
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1028,7 +1257,12 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    &lt;div>&lt;p>Hello&lt;/p>&lt;/div>
+    &lt;div class="selected">&lt;p>Hello Again&lt;/p>&lt;/div>
+
+    $( "p" ).parent( ".selected" ).css( "background", "yellow" );
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1046,7 +1280,13 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    var highlightedItems = userList.querySelectorAll('.highlighted');
+
+    highlightedItems.forEach(function(userItem) {
+      deleteUser(userItem);
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1055,7 +1295,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    let myCollection = $("div");
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1073,7 +1315,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    let myCollection = document.querySelectorAll(".s-container");
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1082,7 +1326,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    let myCollection = $(".s-container");
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1097,7 +1343,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    let myItemId = document.getElementById("itemId");
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1106,7 +1354,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    let myIdItem = $("#itemId");
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1124,7 +1374,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    let myButtons = document.querySelectorAll(".btn[disabled]");
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1133,7 +1385,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    let myBtns = $(".btn[disabled]");
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1178,7 +1432,15 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    &lt;a href="#" id="abc">jhg&lt;/a>
+    &lt;a href="#" id="myLink">jhhghj&lt;/a>
+
+    document.getElementById("myLink").onclick = function() {
+      document.getElementById("abc").href="xyz.php";
+      return false;
+    };
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1187,7 +1449,15 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
+                <pre>
+    $('a[href^="http://"]').each(function(){
+      var oldUrl = $(this).attr("href");
+      // Get current url
+      var newUrl = oldUrl.replace("http://", "https://");
+      // Create new url
+      $(this).attr("href", newUrl);
+    });
+                </pre>
               </code>
             </fieldset>
           </div>
@@ -1322,7 +1592,7 @@
           <li>Get an item by id</li>
           <li>Get all the elements</li>
           <li>Get the options of a selection</li>
-          <li>CHange the href atribute</li>
+          <li>Change the href atribute</li>
           <li>Show an alert with values</li>
           <li>Remove all items</li>
           <li>Animate an item</li>
