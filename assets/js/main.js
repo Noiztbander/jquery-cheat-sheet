@@ -395,10 +395,17 @@ function js_6() {
   myDiv.insertAdjacentHTML(
     "afterbegin",
     `
-    <p>Insert Text here</p>
+    <input id="input-js-6" type="text" size="30" onkeypress="newInput()">
+    <p id = "p-js6">Insert Text here</p>
     `
   );
   myCodeDiv.appendChild(myDiv);
+}
+
+function newInput() {
+  let myInput = document.getElementById("input-js-6");
+  let myPwithInput = document.getElementById("p-js6");
+  myPwithInput.innerHTML = myInput.value;
 }
 
 function jquery_6() {
@@ -408,10 +415,15 @@ function jquery_6() {
   myDiv.insertAdjacentHTML(
     "afterbegin",
     `
-    <p>Insert Text here</p>
+    <input id="input-jquery-6" type="text" size="30" onkeypress="newInputjquery()">
+    <p id = "p-jquery6">Insert Text here</p>
     `
   );
   myCodeDiv.appendChild(myDiv);
+}
+
+function newInputjquery() {
+  $("#p-jquery6").html($("#input-jquery-6").val());
 }
 
 /* **********
@@ -426,11 +438,21 @@ function js_7() {
   myDiv.insertAdjacentHTML(
     "afterbegin",
     `
-    <p>Insert Text here</p>
+    <img id= "img-js-7" src="assets/images/Chico_bolsa_logo.png" alt="pixel art" style="width:20%;">
+    <p id="p-js-7">Insert Text here</p>
     `
   );
   myCodeDiv.appendChild(myDiv);
+
+  let img = document.getElementById("img-js-7");
+
+  img.addEventListener('load', (event) => {
+      let p_js_7 = document.getElementById("p-js-7");
+      p_js_7.innerHTML = "Image loaded"
+  });
 }
+
+
 
 function jquery_7() {
   let myCodeDiv = document.getElementById("jquery-7");
@@ -439,10 +461,21 @@ function jquery_7() {
   myDiv.insertAdjacentHTML(
     "afterbegin",
     `
-    <p>Insert Text here</p>
+    <img id= "img-jquery-7" src="assets/images/Chico_bolsa_logo.png" alt="pixel art" style="width:20%;">
+    <p id="p-jquery-7"></p>
     `
   );
   myCodeDiv.appendChild(myDiv);
+
+  $("#img-jquery-7").one("load", function() {
+    $("#p-jquery-7").html("Image loaded");
+  })
+  //.each(function() {
+  //   if(this.complete) {
+  //     $(this).load();
+  //     $("#p-jquery-7").html("Image don't loaded");
+  //   }
+  // })
 }
 
 /* **********
@@ -457,10 +490,19 @@ function js_8() {
   myDiv.insertAdjacentHTML(
     "afterbegin",
     `
-    <p>Insert Text here</p>
+    <img id= "img-js-8" src="assets/images/Chico_bolsa_logo.jpg" alt="pixel art" style="width:20%;">
+    <p id="p-js-8"></p>
     `
   );
   myCodeDiv.appendChild(myDiv);
+
+  let myImage_js8 = document.getElementById("img-js-8");
+
+  myImage_js8.addEventListener('error', imageNotFound);
+
+  function imageNotFound() {
+    myImage_js8.setAttribute("src", "assets/images/giphy.gif");
+  }
 }
 
 function jquery_8() {
@@ -470,10 +512,15 @@ function jquery_8() {
   myDiv.insertAdjacentHTML(
     "afterbegin",
     `
-    <p>Insert Text here</p>
+    <img id= "img-jquery-8" src="assets/images/Chico_bolsa_logo.jpg" alt="pixel art" style="width:20%;">
+    <p id="p-jquery-8"></p>
     `
   );
   myCodeDiv.appendChild(myDiv);
+
+  $("#img-jquery-8").on("error", function () {
+    $(this).attr("src", "assets/images/giphy.gif");
+  });
 }
 
 /* **********
@@ -488,10 +535,24 @@ function js_9() {
   myDiv.insertAdjacentHTML(
     "afterbegin",
     `
-    <p>Insert Text here</p>
+    <form id="myForm-js9" action="/action_page.php">
+    First name: <input type="text" name="fname"><br>
+    Last name: <input type="text" name="lname"><br><br>
+    </form>
     `
   );
   myCodeDiv.appendChild(myDiv);
+
+  let myBtn = document.getElementById("mybtnjs9");
+  myBtn.innerHTML = "Submit";
+  myBtn.addEventListener("click", mySubmitJs);
+
+  function mySubmitJs() {
+    alert("From submitted");
+    let myForm = document.getElementById("myForm-js9")
+    myForm.submit();
+    myForm.reset();
+  }
 }
 
 function jquery_9() {
@@ -501,10 +562,19 @@ function jquery_9() {
   myDiv.insertAdjacentHTML(
     "afterbegin",
     `
-    <p>Insert Text here</p>
+    <form id="myForm-jquery9" action="/action_page.php">
+    First name: <input type="text" name="fname"><br>
+    Last name: <input type="text" name="lname"><br><br>
+    </form>
     `
   );
   myCodeDiv.appendChild(myDiv);
+
+  let myBtn = $("#mybtnjquery9");
+  myBtn.attr("type", "submit");
+  myBtn.on("click",()=>{
+    $("#myForm-jquery9").submit()
+  });
 }
 
 /* **********

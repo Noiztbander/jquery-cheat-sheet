@@ -252,6 +252,10 @@
               <code>
                 <pre>
     document.getElementById("myText").value = "Johnny Bravo";
+
+    let myInput = document.getElementById("input-js-6");
+    let myPwithInput = document.getElementById("p-js6");
+    myPwithInput.innerHTML = myInput.value;
                 </pre>
               </code>
             </fieldset>
@@ -262,7 +266,9 @@
               <legend>Code</legend>
               <code>
                 <pre>
-    $("text.sitebg").val("000000");
+    $("myText").val("John Doe");
+
+    $("#p-jquery6").html($("#input-jquery-6").val());
                 </pre>
               </code>
             </fieldset>
@@ -279,12 +285,11 @@
               <legend>Code</legend>
               <code>
                 <pre>
-    $(document).ready(function() {
-      var tmpImg = new Image() ;
-      tmpImg.src = $('#img').attr('src') ;
-      tmpImg.onload = function() {
-          // Run onload code.
-      };
+    let img = document.getElementById("img-js-7");
+
+    img.addEventListener('load', (event) => {
+        let p_js_7 = document.getElementById("p-js-7");
+        p_js_7.innerHTML = "Image Loaded"
     });
                 </pre>
               </code>
@@ -296,14 +301,9 @@
               <legend>Code</legend>
               <code>
                 <pre>
-    $("img").one("load", function() {
-      // do stuff
-    }).each(function() {
-      if(this.complete) {
-          $(this).load(); // For jQuery < 3.0
-          // $(this).trigger('load'); // For jQuery >= 3.0
-      }
-    });
+    $("#img-jquery-7").one("load", function() {
+      $("#p-jquery-7").html("Image loaded");
+    })
                 </pre>
               </code>
             </fieldset>
@@ -323,19 +323,13 @@
               <legend>Code</legend>
               <code>
                 <pre>
-    function testImage(url) {
-      var tester = new Image();
-      tester.addEventListener('load', imageFound);
-      tester.addEventListener('error', imageNotFound);
-      tester.src = url;
-    }
-    function imageFound() {
-        alert('That image is found and loaded');
-    }
+    let myImage_js8 = document.getElementById("img-js-8");
+
+    myImage_js8.addEventListener('error', imageNotFound);
+
     function imageNotFound() {
-        alert('That image was not found.');
+      myImage_js8.setAttribute("src", "assets/images/giphy.gif");
     }
-    testImage("http://foo.com/bar.jpg");
                 </pre>
               </code>
             </fieldset>
@@ -346,8 +340,8 @@
               <legend>Code</legend>
               <code>
                 <pre>
-    $("img").on("error", function(){
-      $("img").replaceWith("&lt;p>Error loading image!&lt;/p>");
+    $("#img-jquery-8").on("error", function () {
+      $(this).attr("src", "assets/images/giphy.gif");
     });
                 </pre>
               </code>
@@ -365,7 +359,15 @@
               <legend>Code</legend>
               <code>
                 <pre>
-    document.getElementById("myForm").submit();
+    let myBtn = document.getElementById("mybtnjs9");
+    myBtn.addEventListener("click", mySubmitJs);
+
+    function mySubmitJs() {
+      alert("From submitted");
+      let myForm = document.getElementById("myForm-js9")
+      myForm.submit();
+      myForm.reset();
+    };
                 </pre>
               </code>
             </fieldset>
@@ -381,8 +383,10 @@
     event.preventDefault();
     });
 
-    $( "#other" ).click(function() {
-      $( "#target" ).submit();
+    let myBtn = $("#mybtnjquery9");
+    myBtn.attr("type", "submit");
+    myBtn.on("click",()=>{
+      $("#myForm-jquery9").submit()
     });
                 </pre>
               </code>
@@ -445,9 +449,11 @@
               <legend>Code</legend>
               <code>
                 <pre>
-    On HTML: &lt;img onmouseover="bigImg(this)" src="smiley.gif" alt="Smiley">
+    On HTML:
+    &lt;img onmouseover="bigImg(this)" src="smiley.gif" alt="Smiley">
 
-    document.getElementById("demo").onmouseover = function() {mouseOver()};
+    document.getElementById("demo")
+    .onmouseover = function() {mouseOver()};
 
     function mouseOver() {
       document.getElementById("demo").style.color = "red";
@@ -729,8 +735,9 @@
             <fieldset>
               <legend>Code</legend>
               <code>
-                <pre></pre>
-                $( "&lt;p>Test&lt;/p>" ).insertAfter( ".inner" );
+                <pre>
+    $( "&lt;p>Test&lt;/p>" ).insertAfter( ".inner" );
+                </pre>
               </code>
             </fieldset>
           </div>
